@@ -1,0 +1,112 @@
+/afs/in2p3.fr/home/f/fjammes/src/qserv/admin/tools/docker/deployment/in2p3/demo
+COUNTS
+------
+
+SELECT count(*) FROM Object
+SUM(QS1_COUNT)
+1811058432
+
+real	0m15.730s
+user	0m0.016s
+sys	0m0.009s
+
+SELECT count(*) FROM Source
+SUM(QS1_COUNT)
+33431605957
+
+real	0m16.155s
+user	0m0.013s
+sys	0m0.011s
+
+SELECT count(*) FROM ForcedSource
+SUM(QS1_COUNT)
+164921304318
+
+real	0m16.288s
+user	0m0.008s
+sys	0m0.020s
+
+FULL TABLE SCANS
+----------------
+Full table scan, use some column in WHERE that is not indexed, make sure the number of results returned is sane (eg thousands, not millions)
+
+mysql --host ccqserv100.in2p3.fr --port 4040 --user qsmaster LSST -e "SELECT COUNT(*)  FROM Object WHERE y_instFlux > 5"
+SUM(QS1_COUNT)
+0
+
+real	4m53.521s
+user	0m0.005s
+sys	0m0.014s
+
+mysql --host ccqserv100.in2p3.fr --port 4040 --user qsmaster LSST -e "select min(ra), max(ra), min(decl), max(decl) from Object;"
+MIN(QS1_MIN)	MAX(QS2_MAX)	MIN(QS3_MIN)	MAX(QS4_MAX)
+0	359.9999999211987	-89.99809985317125	45.529411709640144
+
+real	5m26.747s
+user	0m0.011s
+sys	0m0.013s
+
+mysql --host ccqserv100.in2p3.fr --port 4040 --user qsmaster LSST -e "select count(*) from Source where flux_sinc between 1 and 2;"
+SUM(QS1_COUNT)
+3390979
+
+real	26m46.141s
+user	0m0.008s
+sys	0m0.018s
+
+mysql --host ccqserv100.in2p3.fr --port 4040 --user qsmaster LSST -e "select count(*) from Source where flux_sinc between 2 and 3;"
+ERROR 4120 (Proxy) at line 1: Unable to return query results:
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+
+Ctrl-C -- query killed. Continuing normally.
+Ctrl-C -- query killed. Continuing normally.

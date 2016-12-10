@@ -1,0 +1,74 @@
+/afs/in2p3.fr/home/f/fjammes/src/qserv/admin/tools/docker/deployment/in2p3/demo
+COUNTS
+------
+
+SELECT count(*) FROM Object
+SUM(QS1_COUNT)
+1811058432
+
+real	0m24.637s
+user	0m0.013s
+sys	0m0.009s
+
+SELECT count(*) FROM Source
+ERROR 4120 (Proxy) at line 1: Unable to return query results:
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+
+Ctrl-C -- query killed. Continuing normally.
+
+real	90m9.911s
+user	0m0.015s
+sys	0m0.018s
+
+SELECT count(*) FROM ForcedSource
+ERROR 2013 (HY000) at line 1: Lost connection to MySQL server during query

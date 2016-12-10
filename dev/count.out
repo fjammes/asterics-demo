@@ -1,0 +1,28 @@
+/afs/in2p3.fr/home/f/fjammes/src/qserv/admin/tools/docker/deployment/in2p3/demo
+COUNTS
+------
+
+SELECT count(*) FROM Object
+SUM(QS1_COUNT)
+1811058432
+
+real	0m20.855s
+user	0m0.012s
+sys	0m0.011s
+
+SELECT count(*) FROM Source
+SUM(QS1_COUNT)
+33431605957
+
+real	0m21.758s
+user	0m0.009s
+sys	0m0.012s
+
+SELECT count(*) FROM ForcedSource
+SUM(QS1_COUNT)
+164921304318
+
+real	0m21.779s
+user	0m0.009s
+sys	0m0.014s
+
