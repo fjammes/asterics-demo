@@ -1,0 +1,61 @@
+/afs/in2p3.fr/home/f/fjammes/src/qserv/admin/tools/docker/deployment/in2p3/demo
+FULL TABLE SCANS
+----------------
+Full table scan, use some column in WHERE that is not indexed, make sure the number of results returned is sane (eg thousands, not millions)
+
+mysql --host ccqserv100.in2p3.fr --port 4040 --user qsmaster LSST -e "SELECT COUNT(*)  FROM Object WHERE y_instFlux > 5"
+SUM(QS1_COUNT)
+0
+
+real	4m20.572s
+user	0m0.019s
+sys	0m0.039s
+
+mysql --host ccqserv100.in2p3.fr --port 4040 --user qsmaster LSST -e "select min(ra), max(ra), min(decl), max(decl) from Object;"
+MIN(QS1_MIN)	MAX(QS2_MAX)	MIN(QS3_MIN)	MAX(QS4_MAX)
+0	359.9999999211987	-89.99809985317125	45.529411709640144
+
+real	4m31.690s
+user	0m0.016s
+sys	0m0.022s
+
+mysql --host ccqserv100.in2p3.fr --port 4040 --user qsmaster LSST -e "select count(*) from Source where flux_sinc between 1 and 2;"
+SUM(QS1_COUNT)
+3390979
+
+real	27m7.489s
+user	0m0.011s
+sys	0m0.021s
+
+mysql --host ccqserv100.in2p3.fr --port 4040 --user qsmaster LSST -e "select count(*) from Source where flux_sinc between 2 and 3;"
+SUM(QS1_COUNT)
+3439462
+
+real	26m57.648s
+user	0m0.011s
+sys	0m0.019s
+
+mysql --host ccqserv100.in2p3.fr --port 4040 --user qsmaster LSST -e "select count(*) from ForcedSource where psfFlux between 0.1 and 0.2;"
+SUM(QS1_COUNT)
+64948485
+
+real	11m46.730s
+user	0m0.009s
+sys	0m0.021s
+
+JOINS
+-----
+mysql --host ccqserv100.in2p3.fr --port 4040 --user qsmaster LSST -e "select count(*) from Object o, Source s WHERE o.deepSourceId=s.objectId AND s.flux_sinc BETWEEN 0.13 AND 0.14;"
+SUM(QS1_COUNT)
+33639
+
+real	130m52.086s
+user	0m0.012s
+sys	0m0.018s
+
+mysql --host ccqserv100.in2p3.fr --port 4040 --user qsmaster LSST -e "select (*) FROM Object o, ForcedSource f WHERE o.deepSourceId=f.deepSourceId AND f.psfFlux BETWEEN 0.13 AND 0.14;"
+ERROR 4110 (Proxy) at line 1: Query processing error: QI=?: Failed to instantiate query: Invalid or unsupported query: select(*) FROM Object o,ForcedSource f WHERE o.deepSourceId=f.deepSourceId AND f.psfFlux BETWEEN 0.13 AND 0.14
+
+real	0m0.032s
+user	0m0.010s
+sys	0m0.017s
