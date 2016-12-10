@@ -1,0 +1,70 @@
+/afs/in2p3.fr/home/f/fjammes/src/qserv/admin/tools/docker/deployment/in2p3/demo
+FULL TABLE SCANS
+----------------
+Full table scan, use some column in WHERE that is not indexed, make sure the number of results returned is sane (eg thousands, not millions)
+
+mysql --host ccqserv100.in2p3.fr --port 4040 --user qsmaster LSST -e "SELECT COUNT(*)  FROM Object WHERE y_instFlux > 5"
+Ctrl-C -- query killed. Continuing normally.
+Ctrl-C -- query killed. Continuing normally.
+Ctrl-C -- exit!
+
+real	2m10.835s
+user	0m0.013s
+sys	0m0.017s
+
+mysql --host ccqserv100.in2p3.fr --port 4040 --user qsmaster LSST -e "select min(ra), max(ra), min(decl), max(decl) from Object;"
+ERROR 4120 (Proxy) at line 1: Unable to return query results:
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+[0] 
+
+Ctrl-C -- query killed. Continuing normally.
+Ctrl-C -- query killed. Continuing normally.

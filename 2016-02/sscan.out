@@ -1,0 +1,9 @@
+/afs/in2p3.fr/home/f/fjammes/src/qserv/admin/tools/docker/deployment/in2p3/demo
+SHARED SCANS
+------------
+Two scans on Object. Startup was staggered.
+
+parallel: SIGTERM received. No new jobs will be started.
+parallel: Waiting for these 2 jobs to finish. Send SIGTERM again to stop now.
+parallel: mysql_query SELECT\ COUNT\(\*\)\ FROM\ Object\ WHERE\ y_instFlux\ \>\ 5
+parallel: mysql_query SELECT\ MIN\(ra\),\ MAX\(ra\)\ FROM\ Object\ WHERE\ decl\ \>\ 3
